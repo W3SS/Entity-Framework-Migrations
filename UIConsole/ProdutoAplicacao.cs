@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.Data.Entity;
 
 namespace UIConsole
 {
     public class ProdutoAplicacao
     {
         public DBProduto banco { get; set; }
+
         public ProdutoAplicacao()
         {
             banco = new DBProduto();
@@ -16,13 +19,15 @@ namespace UIConsole
 
         public void Salvar(Produto produto)
         {
+            produto.Categoria = banco.Categorias.ToList().Where(x => x.Id == produto.Categoria.Id).FirstOrDefault();
             banco.Produtos.Add(produto);
             banco.SaveChanges();
         }
 
         public IEnumerable<Produto> Listar()
         {
-            return banco.Produtos.ToList();
+            //return banco.Produtos.ToList();
+            return banco.Produtos.Include(x => x.Categoria).ToList();
         }
         public void Alterar(Produto produto)
         {

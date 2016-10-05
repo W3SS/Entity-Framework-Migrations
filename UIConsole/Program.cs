@@ -10,20 +10,34 @@ namespace UIConsole
     {
         static void Main(string[] args)
         {
-            ProdutoAplicacao app = new ProdutoAplicacao();
+            CategoriaAplicacao appCategoria = new CategoriaAplicacao();
 
-            Produto produto01 = new Produto();
-            //produto01.Id = 1;
-            produto01.Nome = "Oleo";
-            produto01.Categoria = "Vegetal";
-            app.Salvar(produto01);
-            //app.Excluir(2);
+            Categoria cat01 = new Categoria();
+            cat01.Descricao = "Pacotes";
 
-            IEnumerable <Produto> ProdutosNoBancoDeDados = app.Listar();
-            foreach (var produtoNaLista in app.Listar())
+            //appCategoria.Salvar(cat01);
+
+            ProdutoAplicacao appProduto = new ProdutoAplicacao();
+            Produto prod01 = new Produto();
+            prod01.Nome = "Açucar";
+            prod01.Categoria = appCategoria.Listar().Where(x => x.Id == 4).FirstOrDefault();
+
+            appProduto.Salvar(prod01);
+
+            Console.WriteLine("Lista de Produtos");
+
+            var listaDeProdutos = appProduto.Listar();
+            foreach (var produto in listaDeProdutos)
             {
-                Console.WriteLine("{0} - {1} - {2}", produtoNaLista.Id, produtoNaLista.Nome, produtoNaLista.Categoria);
-            }            
+                Console.WriteLine("{0} - {1} - {2}", produto.Id, produto.Nome, produto.Categoria.Descricao);
+            }
+
+            Console.WriteLine("Lista de Categorias");
+            var listaDeCategorias = appCategoria.Listar();
+            foreach (var categoria in listaDeCategorias)
+            {
+                Console.WriteLine("{0} - {1}", categoria.Id, categoria.Descricao);
+            }
             Console.ReadKey();
         }
     }

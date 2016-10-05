@@ -1,0 +1,47 @@
+﻿*************************************************************************************************
+						Apartir de um projeto vazio do Visual Studio
+*************************************************************************************************
+1-Criar um projeto Console
+2-Criar uma classe POCO produto.cs
+3-Criar Referencia ao EF no Package Manager com o comando (Install-Package entityframework)
+4-Criar uma classe para utilização do EF, DBProduto
+5-Configurações da Base em app.config
+6-Criar uma classe de metodos do produto, ProdutoAplicacao.cs
+7-Criar um arquivo de conf. do Migration com o comando (Enable-Migrations) 
+8-Criar uma imagem do BD com o comando (Add-Migration nome)
+9-Atualizar BD com o comando (Update-Database -Verbose) 
+10-Reverter BD ate o estado inicial com o comando (Update-Database -TargetMigration:nome) // ocorreram erros ate a remocao das dependencias no codigo
+
+11-Exclusão da base e geração automática com o comando (Update-Database -force) 
+12-Criar uma classe POCO categoria.cs 
+13-Alteracao da classe produto.cs e DBProduto para vincular clase categoria.cs
+14-6-Criar uma classe de metodos da categoria, CategoriaAplicacao.cs
+15-Alteracao da classe ProdutoAplicao.cs para vincular este a categoria
+
+
+
+*************************************************************************************************
+							Comandos do package Manager Console
+*************************************************************************************************
+Install-Package entityframework
+Instala as referencias do Entity Framework ao projeto
+
+Enable-Migrations 
+Habilita e cria o migratin ao projeto
+
+Add-Migration nome
+Cria uma classe com as ultimas atualizações feitas na estrutura de dados
+onde o parametro nome, acaba por ser a referencia que pretenda dar ao arquivo
+
+Update-Database -Verbose
+Atualiza as informações do Migrate no Banco de dados
+comando verbose serve para mostrar um passo a passo na console
+
+Update-Database -Script -SourceMigrtion$InitialDatabase -TargetMigration:nome
+Cria um script com todas as alteracoes desde o arq. initial ate o arquivo do target
+onde o parametro nome, acaba por ser o nome referencia do ultimo arquivo
+
+Update-Database -TargetMigration:nome
+Atualiza base de dados ate a configuração existente no arquivo do target migration
+
+
