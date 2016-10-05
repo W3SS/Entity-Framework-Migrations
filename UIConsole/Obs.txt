@@ -8,7 +8,7 @@
 5-Configurações da Base em app.config
 6-Criar uma classe de metodos do produto, ProdutoAplicacao.cs
 7-Criar um arquivo de conf. do Migration com o comando (Enable-Migrations) 
-8-Criar uma imagem do BD com o comando (Add-Migration nome)
+8-Criar uma imagem inicial do BD com o comando (Add-Migration "nome")
 9-Atualizar BD com o comando (Update-Database -Verbose) 
 10-Reverter BD ate o estado inicial com o comando (Update-Database -TargetMigration:nome) // ocorreram erros ate a remocao das dependencias no codigo
 
@@ -27,7 +27,15 @@
 20-Atualizar BD com o comando (Update-Database) 
 21-Criar uma classe de metodos do ListaDeProdutos, ListaDeProdutoAplicacao.cs
 
-
+----Refatoração
+22- Criar 3 projetos e remover do proj inicial as classes para seus respectivos projetos
+23- Remover pasta Migration
+24- Criar Referencia ao EF no projeto Repositorio e Aplicacao com o Package Manager usando o comando (Install-Package entityframework)
+25- Ajustar Namespaces e referencias
+26- Criar um arquivo de conf. do Migration no projeo Repositorio com o comando (Enable-Migrations) 
+27- Criar uma imagem inicial do BD com o comando (Add-Migration "nome")
+28- Atualizar BD com o comando (Update-Database -Verbose) 
+29- Reescrever Program.cs
 
 *************************************************************************************************
 							Comandos do package Manager Console

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Entity;
+using Repositorio;
+using Dominio;
 using System.Data.Entity;
 
-namespace UIConsole
+namespace Aplicacao
 {
     public class ProdutoAplicacao
     {
@@ -35,9 +33,9 @@ namespace UIConsole
             produtoSalvar.Nome = produto.Nome;
             banco.SaveChanges();
         }
-        public void Excluir(int Id)
+        public void Excluir(int id)
         {
-            Produto produtoExcluir = banco.Produtos.Where(x => x.Id == Id).First();
+            Produto produtoExcluir = banco.Produtos.Where(x => x.Id == id).First();
             banco.Set<Produto>().Remove(produtoExcluir);
             banco.SaveChanges();
         }

@@ -1,19 +1,18 @@
-namespace UIConsole.Migrations
+namespace Repositorio.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<UIConsole.DBProduto>
+    internal sealed class Configuration : DbMigrationsConfiguration<Repositorio.DBProduto>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "UIConsole.DBProduto";
         }
 
-        protected override void Seed(UIConsole.DBProduto context)
+        protected override void Seed(Repositorio.DBProduto context)
         {
             //  This method will be called after migrating to the latest version.
 

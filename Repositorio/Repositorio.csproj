@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16C64C4A-7D92-4927-BA2F-2DE096DBEBF6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{ED20F59E-0826-4D1F-B7C8-925D9F0E7541}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UIConsole</RootNamespace>
-    <AssemblyName>UIConsole</AssemblyName>
+    <RootNamespace>Repositorio</RootNamespace>
+    <AssemblyName>Repositorio</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -52,25 +49,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DBProduto.cs" />
+    <Compile Include="Migrations\201610052123253_DBInicial.cs" />
+    <Compile Include="Migrations\201610052123253_DBInicial.Designer.cs">
+      <DependentUpon>201610052123253_DBInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{b1e99885-0323-4688-a2d2-78ad0a5552cf}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Obs.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Aplicacao\Aplicacao.csproj">
-      <Project>{12e8d6d9-fbab-4507-8b12-33806b8f365a}</Project>
-      <Name>Aplicacao</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Dominio\Dominio.csproj">
-      <Project>{b1e99885-0323-4688-a2d2-78ad0a5552cf}</Project>
-      <Name>Dominio</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Migrations\201610052123253_DBInicial.resx">
+      <DependentUpon>201610052123253_DBInicial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
