@@ -12,11 +12,20 @@
 9-Atualizar BD com o comando (Update-Database -Verbose) 
 10-Reverter BD ate o estado inicial com o comando (Update-Database -TargetMigration:nome) // ocorreram erros ate a remocao das dependencias no codigo
 
+----Relacionamento 1 para N
 11-Exclusão da base e geração automática com o comando (Update-Database -force) 
 12-Criar uma classe POCO categoria.cs 
 13-Alteracao da classe produto.cs e DBProduto para vincular clase categoria.cs
 14-6-Criar uma classe de metodos da categoria, CategoriaAplicacao.cs
 15-Alteracao da classe ProdutoAplicao.cs para vincular este a categoria
+
+----Relacionamento N to N
+16-Exclusão da base e geração automática com o comando (Update-Database -force) 
+17-Criar uma classe POCO ListaDeproduto.cs
+18-Alteracao da classe produto.cs e DBProduto para vincular classe ListaDeProduto.cs
+19-Criar uma imagem do BD com o comando (Add-Migration nome)
+20-Atualizar BD com o comando (Update-Database) 
+21-Criar uma classe de metodos do ListaDeProdutos, ListaDeProdutoAplicacao.cs
 
 
 
