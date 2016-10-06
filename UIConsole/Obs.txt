@@ -37,6 +37,23 @@
 28- Atualizar BD com o comando (Update-Database -Verbose) 
 29- Reescrever Program.cs
 
+
+----Eduardo Pires (CodeFirst)
+1- Criar uma base de dados Legacy com um modelo ruim
+2- Instalar o plugin Entity Framework Power Tools Beta 4 (https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d)
+// Como o plugin não é suportado para VS2015, incluir no seu arquivo extension.vsixmanifest a versao 14 (referente ao VS2015)
+// Plugin opcional que ajuda na leitura de scripts (Devart T4 Editor for Visual Studio)
+3- Seleciona o projeto > Entity > Reverse Engenieer Code First para criar a estrutura (Instalar o EF pode ser necessario)
+4- Refatorar nomes das classes
+5- Criar um arquivo de conf. do Migration no projeo Repositorio com o comando (Enable-Migrations) 
+//Antes deve ser removido a palavra name do metodo public ProjName() : base(name:"nomedabase") {}
+6- Atualizar em Migrations>Configuration.cs de AutomaticMigrationsEnabled = false; para AutomaticMigrationsEnabled = true;
+7- Alterar informações em legacydbcontext.cs para que ao atualizar a BD, seja utilizado o padrao que queremos (ex:varchar ao invez de nvarchar)
+/-Criar uma imagem do BD sem informações de Up ou Down com o comando (Add-Migration Initial -IgnoreChanges)
+8- Atualizar BD com o comando (Update-Database -Verbose) 
+
+
+
 *************************************************************************************************
 							Comandos do package Manager Console
 *************************************************************************************************
@@ -50,6 +67,10 @@ Add-Migration nome
 Cria uma classe com as ultimas atualizações feitas na estrutura de dados
 onde o parametro nome, acaba por ser a referencia que pretenda dar ao arquivo
 
+Add-Migration Initial -IgnoreChanges
+Cria uma classe com sem atualizações de Up e Down na estrutura de dados
+onde o parametro Initial, acaba por ser a referencia que pretenda dar ao arquivo (usado qdo é o primeiro a ser criado)
+
 Update-Database -Verbose
 Atualiza as informações do Migrate no Banco de dados
 comando verbose serve para mostrar um passo a passo na console
@@ -60,5 +81,3 @@ onde o parametro nome, acaba por ser o nome referencia do ultimo arquivo
 
 Update-Database -TargetMigration:nome
 Atualiza base de dados ate a configuração existente no arquivo do target migration
-
-
