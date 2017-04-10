@@ -8,12 +8,14 @@ namespace Aplicacao
 {
     public class ListaDeProdutoAplicacao
     {
+        //
 
         public DBProduto banco { get; set; }
 
         public ListaDeProdutoAplicacao()
         {
             banco = new DBProduto();
+            
         }
 
         public void Salvar(ListaDeProduto ListaDeProduto)
