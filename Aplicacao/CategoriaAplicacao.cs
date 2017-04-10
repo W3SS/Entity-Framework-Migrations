@@ -12,7 +12,7 @@ namespace Aplicacao
         public DBProduto banco { get; set; }
         public CategoriaAplicacao()
         {
-            //ertfgvhj
+            //aaaaa
             banco = new DBProduto();
         }
         public void Salvar(Categoria categoria)
